@@ -26,31 +26,38 @@ namespace DadosPublicosBacen
             InitializeComponent();
         }
 
-
-
-        public async Task atualizar_grid()
-        {
-            
-
-        }
+              
 
         private async void buscar_dados_Click(object sender, RoutedEventArgs e)
-        {
 
-            if (data_inicial.Text == "")
+
+        {
+            BacenRequests busca_dados = new BacenRequests();
+
+            if (data_inicial.Text == "" && data_final.Text =="")            {
+
+                var registros = await busca_dados.ConsultaBacen(DateTime.Now.ToString("dd/MM/yyyy"), DateTime.Now.ToString("dd/MM/yyyy"));
+
+
+                DI_GRID.ItemsSource = registros;
+
+            } else if (data_inicial.Text!= "" && data_final.Text == "")
             {
-                MessageBox.Show(DateTime.Now.ToString("dd/MM/yyyy"));
+
+                var registros = await busca_dados.ConsultaBacen(data_inicial.Text, data_inicial.Text);
+
+                DI_GRID.ItemsSource = registros;
+            } else
+            {
+
+                var registros = await busca_dados.ConsultaBacen(data_inicial.Text, data_final.Text);
+
+
+                DI_GRID.ItemsSource = registros;
             }
 
 
-            //BacenRequests busca_dados = new BacenRequests();
 
-            //var registros = await busca_dados.ConsultaBacen(data_inicial.Text, data_final.Text);
-
-   
-            //DI_GRID.ItemsSource =  registros;
-
-            //MessageBox.Show(registros.Count.ToString());
 
         }
 

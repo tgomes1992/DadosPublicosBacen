@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BacenClasses;
+using Microsoft.Win32;
 
 namespace DadosPublicosBacen
 {
@@ -64,12 +65,30 @@ namespace DadosPublicosBacen
         private void exportar_dados_Click(object sender, RoutedEventArgs e)
         {
 
-            foreach (Registro registro in DI_GRID.Items)
-            {
+            SaveFileDialog sv = new SaveFileDialog();
+            List<Registro> registros = new List<Registro>();
 
-                MessageBox.Show(registro.fatorDiario.ToString());
+            sv.FileName = $"Consulta - {DateTime.Now.ToString("ddMMyyyy Hms")}";
 
+            sv.Filter = "Csv File|*.csv";
+            sv.Title = "Salvar em CSV";
+
+
+
+            sv.ShowDialog();
+
+     
+            foreach (Registro registo in DI_GRID.ItemsSource) { 
+                registros.Add(registo);
             }
+
+
+
+            if (sv.FileName != "")
+            {
+                ExportacaoArquivos.ExportacaoCsv(sv.FileName, registros);
+            }
+            
         }
     }
 }

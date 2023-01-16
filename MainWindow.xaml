@@ -9,10 +9,10 @@
         Title="MainWindow" Height="500" Width="800">
     <Grid>
         <StackPanel Margin="0,197,0,0">
-            <Label Content="Dados Bacen" Height="29" Width="103" HorizontalAlignment="Left" FontWeight="Bold" FontFamily="Gabriola" FontSize="16"/>
-            <DataGrid x:Name="DI_GRID" Height="236" AutoGenerateColumns="False">
+            <Label Content="Dados Bacen" Height="33" Width="138" HorizontalAlignment="Center" FontWeight="Bold" FontSize="20"/>
+            <DataGrid x:Name="DI_GRID" Height="236" AutoGenerateColumns="False" FontWeight="Bold">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Data" Binding="{Binding dataCotacao}" Width="*"/>
+                    <DataGridTextColumn Header="Data" Binding="{Binding dataCotacao}" Width="*" FontWeight="Bold"/>
                     <DataGridTextColumn Header="Fator" Binding="{Binding fatorDiario}" Width="*"/>
                     <DataGridTextColumn Header="Média" Binding="{Binding media}" Width="*"/>
                 </DataGrid.Columns>
@@ -24,20 +24,20 @@
             </DataGrid>
 
         </StackPanel>
-        <WrapPanel Margin="11,111,350,292">
+        <WrapPanel Margin="11,111,348,307">
             <Label Content="Data Inicial" FontWeight="Bold"/>
             <DatePicker x:Name="data_inicial"/>
             <Label Content="Data Final" FontWeight="Bold"/>
             <DatePicker x:Name="data_final"/>
         </WrapPanel>
-        <StackPanel Margin="231,142,0,292" HorizontalAlignment="Left" Width="193">
+        <StackPanel Margin="249,142,0,320" HorizontalAlignment="Left" Width="175">
             <Button x:Name="buscar_dados" Content="Buscar Dados" Width="158" HorizontalAlignment="Right" Click="buscar_dados_Click"/>
         </StackPanel>
-        <StackPanel Margin="20,142,603,271">
+        <StackPanel Margin="20,142,603,320">
             <Button x:Name="exportar_dados" Content="Exportar Dados" Width="158" HorizontalAlignment="Left" Click="exportar_dados_Click"/>
         </StackPanel>
         <StackPanel Height="40" VerticalAlignment="Top">
-            <Label Content="Consulta Diária - DI BACEN" HorizontalAlignment="Center" Width="272" FontWeight="Bold" FontFamily="Gabriola" Height="43" FontSize="28"/>
+            <Label Content="Consulta Diária - DI BACEN" HorizontalAlignment="Center" Width="272" FontWeight="Bold" Height="43" FontSize="28"/>
         </StackPanel>
 
 
